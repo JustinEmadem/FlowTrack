@@ -24,7 +24,27 @@
   >
     <a routerLink="/">
       @if ((isExpanded$ | async) || (isHovered$ | async) || (isMobileOpen$ | async)) {
-      <img class="dark:block" src="/images/logo/logo-dark.svg" alt="Logo" width="150" height="40"/>
+      <div style="display: flex; align-items: center;">
+      <div class="dark:block" style="width: 150px; height: 40px;">
+        <svg width="150px" height="40px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#ffffff" stroke-width="0.448" >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g> <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g> <g id="SVGRepo_iconCarrier">
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: #ffffff;
+                }
+                .cls-2 {
+                  fill: none;
+                }
+              </style>
+            </defs>
+            <path class="cls-1" d="M20,24H11.8625a4.13,4.13,0,0,0-.4284-1.02L21.98,12.4343A3.9943,3.9943,0,1,0,20.1414,8H14v2h6.1414a3.96,3.96,0,0,0,.4243,1.02L10.02,21.5656A3.9943,3.9943,0,1,0,11.8587,26H20v3h8V21H20ZM24,7a2,2,0,1,1-2,2A2.0023,2.0023,0,0,1,24,7ZM8,27a2,2,0,1,1,2-2A2.0023,2.0023,0,0,1,8,27Zm14-4h4v4H22Z" ></path> <path d="M9.6929,12.7505a5,5,0,0,1-.0005-7.5L11.0166,6.75a3,3,0,0,0-.0005,4.501Z"></path> <path d="M7.0474,15.751a9,9,0,0,1,0-13.501l1.3232,1.5a7,7,0,0,0,0,10.501Z"></path>
+            <rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-2" width="32" height="32"></rect>
+          </g>
+        </svg>
+        </div>
+        <h2 class="font-sans text-white text-xl">FlowTrack</h2>
+      </div>
       }
     </a>
   </div>
@@ -46,7 +66,7 @@
             @if ((isExpanded$ | async) || (isHovered$ | async) || (isMobileOpen$ | async)) 
             { Menu } 
            @else {
-            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-6">
+            <svg width="1em" height="1em" viewBox="4 4 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-6">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M5.99915 10.2451C6.96564 10.2451 7.74915 11.0286 7.74915 11.9951V12.0051C7.74915 12.9716 6.96564 13.7551 5.99915 13.7551C5.03265 13.7551 4.24915 12.9716 4.24915 12.0051V11.9951C4.24915 11.0286 5.03265 10.2451 5.99915 10.2451ZM17.9991 10.2451C18.9656 10.2451 19.7491 11.0286 19.7491 11.9951V12.0051C19.7491 12.9716 18.9656 13.7551 17.9991 13.7551C17.0326 13.7551 16.2491 12.9716 16.2491 12.0051V11.9951C16.2491 11.0286 17.0326 10.2451 17.9991 10.2451ZM13.7491 11.9951C13.7491 11.0286 12.9656 10.2451 11.9991 10.2451C11.0326 10.2451 10.2491 11.0286 10.2491 11.9951V12.0051C10.2491 12.9716 11.0326 13.7551 11.9991 13.7551C12.9656 13.7551 13.7491 12.9716 13.7491 12.0051V11.9951Z" fill="currentColor"></path>
             </svg>
             }
@@ -285,7 +305,7 @@
                             new
                           </span>
                           }
-                          @if (subItem.pro) {
+                    `      @if (subItem.pro) {
                           <span
                             class="ml-auto menu-dropdown-badge-pro"
                             [ngClass]="{
