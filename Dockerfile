@@ -1,0 +1,9 @@
+FROM node:20
+WORKDIR /app
+RUN npm install -g @angular/cli@20
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 4200
+
+CMD ["tail", "-f", "/dev/null"]
