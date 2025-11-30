@@ -17,27 +17,27 @@ export const routes: Routes = [
         path: '',
         component: EcommerceComponent,
         pathMatch: 'full',
-        title: 'FlowTrack Dashboard - Agular',
+        title: 'FlowTrack - Checche',
       },
       {
         path:'users',
         component:UserListComponent,
-        title: 'FlowTrack Dashboard - Agular',
+        title: 'FlowTrack - Checche',
       },
       {
         path:'profile',
         component:ProfileComponent,
-        title: 'FlowTrack Dashboard - Agular',
+        title: 'FlowTrack - Checche',
       },
       {
         path:'form-elements',
         component:FormElementsComponent,
-        title: 'FlowTrack Dashboard - Agular',
+        title: 'FlowTrack - Checche',
       },
       {
         path:'basic-tables',
         component:BasicTablesComponent,
-        title: 'FlowTrack Dashboard - Agular',
+        title: 'FlowTrack - Checche',
       },
     ]
   },
