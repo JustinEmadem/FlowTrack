@@ -1,0 +1,49 @@
+<app-button size="sm" (btnClick)="openModal()">Add Role</app-button>
+
+<app-modal
+  [isOpen]="isOpen"
+  (close)="closeModal()"
+  className="max-w-[584px] p-5 lg:p-10"
+>
+  <form>
+    <h4 class="mb-6 text-lg font-medium text-gray-800 dark:text-white/90">
+      Role Information
+    </h4>
+
+    <div class="grid grid-cols-1 gap-y-5">
+      
+      <div class="col-span-1">
+        <app-label>Role Name</app-label>
+        <app-input-field
+          id="role"
+          type="text"
+          placeholder="Administrator"
+          [(ngModel)]="role"
+          name="role"
+        />
+      </div>
+
+      <div class="col-span-1">
+        <app-label>Description</app-label>
+        <app-input-field
+          id="description"
+          type="text"
+          placeholder="Manages all system permissions"
+          [(ngModel)]="description"
+          name="description"
+        />
+      </div>
+
+    </div>
+
+    <div class="flex items-center justify-end w-full gap-3 mt-6">
+      <app-button size="sm" variant="outline" (btnClick)="closeModal()">
+        Close
+      </app-button>
+      <app-button size="sm" (btnClick)="handleSave()">
+        Save Changes
+      </app-button>
+    </div>
+
+  </form>
+</app-modal>

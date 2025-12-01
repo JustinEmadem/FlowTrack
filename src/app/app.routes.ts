@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { EcommerceComponent } from './pages/dashboard/ecommerce/ecommerce.component';
 import { UserListComponent } from './pages/users/user-list/user-list.component.component';
+import { RolesComponent } from './pages/roles/roles.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FormElementsComponent } from './pages/forms/form-elements/form-elements.component';
 import { BasicTablesComponent } from './pages/tables/basic-tables/basic-tables.component';
@@ -17,6 +18,11 @@ export const routes: Routes = [
         path: '',
         component: EcommerceComponent,
         pathMatch: 'full',
+        title: 'FlowTrack - Checche',
+      },
+      {
+        path:'roles',
+        component:RolesComponent,
         title: 'FlowTrack - Checche',
       },
       {
