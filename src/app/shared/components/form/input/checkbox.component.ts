@@ -9,6 +9,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   class="flex items-center space-x-3 group cursor-pointer"
   [ngClass]="{ 'cursor-not-allowed opacity-60': disabled }"
 >
+<app-checkbox></app-checkbox>
+
   <div class="relative w-5 h-5">
     <input
       [id]="id"

@@ -29,86 +29,30 @@ export class AppSidebarComponent {
       name: "Dashboard",
       path: "/"
     },
-    { 
-      icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 3.25C4.25736 3.25 3.25 4.25736 3.25 5.5V8.99998C3.25 10.2426 4.25736 11.25 5.5 11.25H9C10.2426 11.25 11.25 10.2426 11.25 8.99998V5.5C11.25 4.25736 10.2426 3.25 9 3.25H5.5ZM4.75 5.5C4.75 5.08579 5.08579 4.75 5.5 4.75H9C9.41421 4.75 9.75 5.08579 9.75 5.5V8.99998C9.75 9.41419 9.41421 9.74998 9 9.74998H5.5C5.08579 9.74998 4.75 9.41419 4.75 8.99998V5.5ZM5.5 12.75C4.25736 12.75 3.25 13.7574 3.25 15V18.5C3.25 19.7426 4.25736 20.75 5.5 20.75H9C10.2426 20.75 11.25 19.7427 11.25 18.5V15C11.25 13.7574 10.2426 12.75 9 12.75H5.5ZM4.75 15C4.75 14.5858 5.08579 14.25 5.5 14.25H9C9.41421 14.25 9.75 14.5858 9.75 15V18.5C9.75 18.9142 9.41421 19.25 9 19.25H5.5C5.08579 19.25 4.75 18.9142 4.75 18.5V15ZM12.75 5.5C12.75 4.25736 13.7574 3.25 15 3.25H18.5C19.7426 3.25 20.75 4.25736 20.75 5.5V8.99998C20.75 10.2426 19.7426 11.25 18.5 11.25H15C13.7574 11.25 12.75 10.2426 12.75 8.99998V5.5ZM15 4.75C14.5858 4.75 14.25 5.08579 14.25 5.5V8.99998C14.25 9.41419 14.5858 9.74998 15 9.74998H18.5C18.9142 9.74998 19.25 9.41419 19.25 8.99998V5.5C19.25 5.08579 18.9142 4.75 18.5 4.75H15ZM15 12.75C13.7574 12.75 12.75 13.7574 12.75 15V18.5C12.75 19.7426 13.7574 20.75 15 20.75H18.5C19.7426 20.75 20.75 19.7427 20.75 18.5V15C20.75 13.7574 19.7426 12.75 18.5 12.75H15ZM14.25 15C14.25 14.5858 14.5858 14.25 15 14.25H18.5C18.9142 14.25 19.25 14.5858 19.25 15V18.5C19.25 18.9142 18.9142 19.25 18.5 19.25H15C14.5858 19.25 14.25 18.9142 14.25 18.5V15Z" fill="currentColor"></path></svg>`,
-      name: "User Management",
-      subItems: [
-        { name: "Permissions", path: "/permissions" },
-        { name: "Roles", path: "/roles" },
-        { name: "Users", path: "/users" },
-      ],
-    },
-    {
-      icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 3.5C7.30558 3.5 3.5 7.30558 3.5 12C3.5 14.1526 4.3002 16.1184 5.61936 17.616C6.17279 15.3096 8.24852 13.5955 10.7246 13.5955H13.2746C15.7509 13.5955 17.8268 15.31 18.38 17.6167C19.6996 16.119 20.5 14.153 20.5 12C20.5 7.30558 16.6944 3.5 12 3.5ZM17.0246 18.8566V18.8455C17.0246 16.7744 15.3457 15.0955 13.2746 15.0955H10.7246C8.65354 15.0955 6.97461 16.7744 6.97461 18.8455V18.856C8.38223 19.8895 10.1198 20.5 12 20.5C13.8798 20.5 15.6171 19.8898 17.0246 18.8566ZM2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM11.9991 7.25C10.8847 7.25 9.98126 8.15342 9.98126 9.26784C9.98126 10.3823 10.8847 11.2857 11.9991 11.2857C13.1135 11.2857 14.0169 10.3823 14.0169 9.26784C14.0169 8.15342 13.1135 7.25 11.9991 7.25ZM8.48126 9.26784C8.48126 7.32499 10.0563 5.75 11.9991 5.75C13.9419 5.75 15.5169 7.32499 15.5169 9.26784C15.5169 11.2107 13.9419 12.7857 11.9991 12.7857C10.0563 12.7857 8.48126 11.2107 8.48126 9.26784Z" fill="currentColor"></path></svg>`,
-      name: "User Profile",
-      path: "/profile",
-    },
-    {
-      icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/> <line x1="7" y1="9" x2="17" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/> <line x1="7" y1="13" x2="17" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/> <line x1="7" y1="17" x2="13" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/> <circle cx="5" cy="9" r="1" fill="currentColor"/> <circle cx="5" cy="13" r="1" fill="currentColor"/> <circle cx="5" cy="17" r="1" fill="currentColor"/> </svg>`,
-      name: "Project Management",
-      path: "/project-management",
-    },
-    {
-      icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="6.5" cy="9" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/> <path d="M4 17c0-1.5 3-2 4.5-2s4.5.5 4.5 2v1H4v-1z" stroke="currentColor" stroke-width="1.5" fill="none"/> <circle cx="12" cy="7" r="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/> <path d="M9 18c0-2 6-2 6 0v1H9v-1z" stroke="currentColor" stroke-width="1.5" fill="none"/> <circle cx="17.5" cy="9" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/> <path d="M15 17c0-1.5 3-2 4.5-2S24 15.5 24 17v1h-9v-1z" stroke="currentColor" stroke-width="1.5" fill="none"/> </svg>`,
-      name: "Team Management",
-      path: "/team-management",
-    },
-    {
-      icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="2" fill="none"/> <path d="M3 9h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/> <path d="M12 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/> <path d="M10 10h4a1 1 0 010 2h-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/> <path d="M10 14h4a1 1 0 000-2h-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`,
-      name: "Task",
-      path: "/task",
-    },
-    {
-      icon: `<svg width="1em" height="1em" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"> <g fill="currentColor" stroke="none"> <path d="M17,12.05V11h3a5,5,0,0,0,5-5V4a1,1,0,0,0-1-1H20a4.92,4.92,0,0,0-3,1V1a1,1,0,0,0-2,0V2a4.92,4.92,0,0,0-3-1H8A1,1,0,0,0,7,2V4a5,5,0,0,0,5,5h3v3.05a10,10,0,1,0,2,0Zm3-7h3V6a3,3,0,0,1-3,3H17V8A3,3,0,0,1,20,5ZM9,4V3h3a3,3,0,0,1,3,3V7H12A3,3,0,0,1,9,4Zm7,26a8,8,0,1,1,8-8A8,8,0,0,1,16,30Z"></path> <path d="M16,19h2a1,1,0,0,0,0-2H17a1,1,0,0,0-2,0v.18A3,3,0,0,0,16,23a1,1,0,0,1,0,2H14a1,1,0,0,0,0,2h1a1,1,0,0,0,2,0v-.18A3,3,0,0,0,16,21a1,1,0,0,1,0-2Z"></path> <path d="M5.71,7.29l-2-2a1,1,0,0,0-1.42,0l-2,2A1,1,0,0,0,1.71,8.71L2,8.41V11a1,1,0,0,0,2,0V8.41l.29.3a1,1,0,0,0,1.42,0A1,1,0,0,0,5.71,7.29Z"></path> <path d="M31.71,13.29l-2-2a1,1,0,0,0-1.42,0l-2,2a1,1,0,0,0,1.42,1.42l.29-.3V17a1,1,0,0,0,2,0V14.41l.29.3a1,1,0,0,0,1.42,0A1,1,0,0,0,31.71,13.29Z"></path> </g> </svg>`,
-      name: "Expenses",
-      path: "/expenses",
-    },
     {
       icon: `<svg width="1em" height="1em" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" id="icon"> <g fill="currentColor" stroke="none"> <rect x="16" y="28" width="7" height="2"></rect> <rect x="16" y="24" width="14" height="2"></rect> <rect x="16" y="20" width="14" height="2"></rect> <polygon points="4 20 4 22 8.586 22 2 28.586 3.414 30 10 23.414 10 28 12 28 12 20 4 20"></polygon> <path d="M28,8H16L12.5859,4.5859A2.0007,2.0007,0,0,0,11.1716,4H4A2,2,0,0,0,2,6V18H4V6h7.1716l3.4141,3.4141L15.1716,10H28v8h2V10A2,2,0,0,0,28,8Z"></path> </g> </svg>`,
       name: "Project Details",
       path: "/project-details",
     },
     {
+      icon: `<svg width="1em" height="1em" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"> <g fill="currentColor" stroke="none"> <path d="M17,12.05V11h3a5,5,0,0,0,5-5V4a1,1,0,0,0-1-1H20a4.92,4.92,0,0,0-3,1V1a1,1,0,0,0-2,0V2a4.92,4.92,0,0,0-3-1H8A1,1,0,0,0,7,2V4a5,5,0,0,0,5,5h3v3.05a10,10,0,1,0,2,0Zm3-7h3V6a3,3,0,0,1-3,3H17V8A3,3,0,0,1,20,5ZM9,4V3h3a3,3,0,0,1,3,3V7H12A3,3,0,0,1,9,4Zm7,26a8,8,0,1,1,8-8A8,8,0,0,1,16,30Z"></path> <path d="M16,19h2a1,1,0,0,0,0-2H17a1,1,0,0,0-2,0v.18A3,3,0,0,0,16,23a1,1,0,0,1,0,2H14a1,1,0,0,0,0,2h1a1,1,0,0,0,2,0v-.18A3,3,0,0,0,16,21a1,1,0,0,1,0-2Z"></path> <path d="M5.71,7.29l-2-2a1,1,0,0,0-1.42,0l-2,2A1,1,0,0,0,1.71,8.71L2,8.41V11a1,1,0,0,0,2,0V8.41l.29.3a1,1,0,0,0,1.42,0A1,1,0,0,0,5.71,7.29Z"></path> <path d="M31.71,13.29l-2-2a1,1,0,0,0-1.42,0l-2,2a1,1,0,0,0,1.42,1.42l.29-.3V17a1,1,0,0,0,2,0V14.41l.29.3a1,1,0,0,0,1.42,0A1,1,0,0,0,31.71,13.29Z"></path> </g> </svg>`,
+      name: "Expenses",
+      path: "/expenses",
+    },
+    
+    {
       icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M16 1C17.6569 1 19 2.34315 19 4C19 4.55228 18.5523 5 18 5C17.4477 5 17 4.55228 17 4C17 3.44772 16.5523 3 16 3H4C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H16C16.5523 21 17 20.5523 17 20V19C17 18.4477 17.4477 18 18 18C18.5523 18 19 18.4477 19 19V20C19 21.6569 17.6569 23 16 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H16Z" fill="currentColor"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7991 8.20087C20.4993 7.90104 20.0132 7.90104 19.7133 8.20087L11.9166 15.9977C11.7692 16.145 11.6715 16.3348 11.6373 16.5404L11.4728 17.5272L12.4596 17.3627C12.6652 17.3285 12.855 17.2308 13.0023 17.0835L20.7991 9.28666C21.099 8.98682 21.099 8.5007 20.7991 8.20087ZM18.2991 6.78666C19.38 5.70578 21.1325 5.70577 22.2134 6.78665C23.2942 7.86754 23.2942 9.61999 22.2134 10.7009L14.4166 18.4977C13.9744 18.9398 13.4052 19.2327 12.7884 19.3355L11.8016 19.5C10.448 19.7256 9.2744 18.5521 9.50001 17.1984L9.66448 16.2116C9.76728 15.5948 10.0602 15.0256 10.5023 14.5834L18.2991 6.78666Z" fill="currentColor"/> <path d="M5 7C5 6.44772 5.44772 6 6 6H14C14.5523 6 15 6.44772 15 7C15 7.55228 14.5523 8 14 8H6C5.44772 8 5 7.55228 5 7Z" fill="currentColor"/> <path d="M5 11C5 10.4477 5.44772 10 6 10H10C10.5523 10 11 10.4477 11 11C11 11.5523 10.5523 12 10 12H6C5.44772 12 5 11.5523 5 11Z" fill="currentColor"/> <path d="M5 15C5 14.4477 5.44772 14 6 14H7C7.55228 14 8 14.4477 8 15C8 15.5523 7.55228 16 7 16H6C5.44772 16 5 15.5523 5 15Z" fill="currentColor"/></svg>`,
       name: "Feedback",
       path: "/feedback",
     },
     {
-      name: "Forms",
-      icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 3.25C4.25736 3.25 3.25 4.25736 3.25 5.5V18.5C3.25 19.7426 4.25736 20.75 5.5 20.75H18.5001C19.7427 20.75 20.7501 19.7426 20.7501 18.5V5.5C20.7501 4.25736 19.7427 3.25 18.5001 3.25H5.5ZM4.75 5.5C4.75 5.08579 5.08579 4.75 5.5 4.75H18.5001C18.9143 4.75 19.2501 5.08579 19.2501 5.5V18.5C19.2501 18.9142 18.9143 19.25 18.5001 19.25H5.5C5.08579 19.25 4.75 18.9142 4.75 18.5V5.5ZM6.25005 9.7143C6.25005 9.30008 6.58583 8.9643 7.00005 8.9643L17 8.96429C17.4143 8.96429 17.75 9.30008 17.75 9.71429C17.75 10.1285 17.4143 10.4643 17 10.4643L7.00005 10.4643C6.58583 10.4643 6.25005 10.1285 6.25005 9.7143ZM6.25005 14.2857C6.25005 13.8715 6.58583 13.5357 7.00005 13.5357H17C17.4143 13.5357 17.75 13.8715 17.75 14.2857C17.75 14.6999 17.4143 15.0357 17 15.0357H7.00005C6.58583 15.0357 6.25005 14.6999 6.25005 14.2857Z" fill="currentColor"></path></svg>`,
-      subItems: [
-        { name: "Form Elements", path: "/form-elements", pro: false }
-      ],
-    },
-    {
-      name: "Tables",
-      icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.25 5.5C3.25 4.25736 4.25736 3.25 5.5 3.25H18.5C19.7426 3.25 20.75 4.25736 20.75 5.5V18.5C20.75 19.7426 19.7426 20.75 18.5 20.75H5.5C4.25736 20.75 3.25 19.7426 3.25 18.5V5.5ZM5.5 4.75C5.08579 4.75 4.75 5.08579 4.75 5.5V8.58325L19.25 8.58325V5.5C19.25 5.08579 18.9142 4.75 18.5 4.75H5.5ZM19.25 10.0833H15.416V13.9165H19.25V10.0833ZM13.916 10.0833L10.083 10.0833V13.9165L13.916 13.9165V10.0833ZM8.58301 10.0833H4.75V13.9165H8.58301V10.0833ZM4.75 18.5V15.4165H8.58301V19.25H5.5C5.08579 19.25 4.75 18.9142 4.75 18.5ZM10.083 19.25V15.4165L13.916 15.4165V19.25H10.083ZM15.416 19.25V15.4165H19.25V18.5C19.25 18.9142 18.9142 19.25 18.5 19.25H15.416Z" fill="currentColor"></path></svg>`,
-      subItems: [
-        { name: "Basic Tables", path: "/basic-tables", pro: false },
-      ],
+      icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="6.5" cy="9" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/> <path d="M4 17c0-1.5 3-2 4.5-2s4.5.5 4.5 2v1H4v-1z" stroke="currentColor" stroke-width="1.5" fill="none"/> <circle cx="12" cy="7" r="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/> <path d="M9 18c0-2 6-2 6 0v1H9v-1z" stroke="currentColor" stroke-width="1.5" fill="none"/> <circle cx="17.5" cy="9" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/> <path d="M15 17c0-1.5 3-2 4.5-2S24 15.5 24 17v1h-9v-1z" stroke="currentColor" stroke-width="1.5" fill="none"/> </svg>`,
+      name: "Sign Out",
+      path: "/signup",
     },
   ];
   othersItems: NavItem[] = [
-    {
-      icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.665 3.75618C11.8762 3.65061 12.1247 3.65061 12.3358 3.75618L18.7807 6.97853L12.3358 10.2009C12.1247 10.3064 11.8762 10.3064 11.665 10.2009L5.22014 6.97853L11.665 3.75618ZM4.29297 8.19199V16.0946C4.29297 16.3787 4.45347 16.6384 4.70757 16.7654L11.25 20.0365V11.6512C11.1631 11.6205 11.0777 11.5843 10.9942 11.5425L4.29297 8.19199ZM12.75 20.037L19.2933 16.7654C19.5474 16.6384 19.7079 16.3787 19.7079 16.0946V8.19199L13.0066 11.5425C12.9229 11.5844 12.8372 11.6207 12.75 11.6515V20.037ZM13.0066 2.41453C12.3732 2.09783 11.6277 2.09783 10.9942 2.41453L4.03676 5.89316C3.27449 6.27429 2.79297 7.05339 2.79297 7.90563V16.0946C2.79297 16.9468 3.27448 17.7259 4.03676 18.1071L10.9942 21.5857L11.3296 20.9149L10.9942 21.5857C11.6277 21.9024 12.3732 21.9024 13.0066 21.5857L19.9641 18.1071C20.7264 17.7259 21.2079 16.9468 21.2079 16.0946V7.90563C21.2079 7.05339 20.7264 6.27429 19.9641 5.89316L13.0066 2.41453Z" fill="currentColor"></path></svg>`,
-      name: "UI Elements",
-      subItems: [
-        { name: "Alerts", path: "/alerts", pro: false },
-        { name: "Avatar", path: "/avatars", pro: false },
-        { name: "Badge", path: "/badge", pro: false },
-        { name: "Buttons", path: "/buttons", pro: false },
-        { name: "Images", path: "/images", pro: false },
-        { name: "Videos", path: "/videos", pro: false },
-      ],
-    },
-    {
-      icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 2.75C14 2.33579 14.3358 2 14.75 2C15.1642 2 15.5 2.33579 15.5 2.75V5.73291L17.75 5.73291H19C19.4142 5.73291 19.75 6.0687 19.75 6.48291C19.75 6.89712 19.4142 7.23291 19 7.23291H18.5L18.5 12.2329C18.5 15.5691 15.9866 18.3183 12.75 18.6901V21.25C12.75 21.6642 12.4142 22 12 22C11.5858 22 11.25 21.6642 11.25 21.25V18.6901C8.01342 18.3183 5.5 15.5691 5.5 12.2329L5.5 7.23291H5C4.58579 7.23291 4.25 6.89712 4.25 6.48291C4.25 6.0687 4.58579 5.73291 5 5.73291L6.25 5.73291L8.5 5.73291L8.5 2.75C8.5 2.33579 8.83579 2 9.25 2C9.66421 2 10 2.33579 10 2.75L10 5.73291L14 5.73291V2.75ZM7 7.23291L7 12.2329C7 14.9943 9.23858 17.2329 12 17.2329C14.7614 17.2329 17 14.9943 17 12.2329L17 7.23291L7 7.23291Z" fill="currentColor"></path></svg>`,
-      name: "Authentication",
-      subItems: [
-        { name: "Sign In", path: "/signin", pro: false },
-        { name: "Sign Up", path: "/signup", pro: false },
-      ],
-    },
+
   ];
 
   openSubmenu: string | null | number = null;
