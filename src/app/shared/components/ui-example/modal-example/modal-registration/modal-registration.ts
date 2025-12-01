@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalComponent } from '../../../ui/modal/modal.component';
 import { ButtonComponent } from '../../../ui/button/button.component';
 import { LabelComponent } from '../../../form/label/label.component';
 import { InputFieldComponent } from '../../../form/input/input-field.component';
 import { AuthService } from '../../../../../services/auth.service';
-import { User } from '../../../../../models/user.model';
+import { RoleService } from '../../../../../services/role.service';
+import { User, Role } from '../../../../../models/user.model';
 import { FormsModule } from '@angular/forms';
 
 
@@ -23,7 +24,7 @@ import { FormsModule } from '@angular/forms';
   styles: ``
 })
 
-export class ModalRegistration {
+export class ModalRegistration implements OnInit {
 
   firstname = '';
   middlename: string | null = null;
@@ -31,13 +32,30 @@ export class ModalRegistration {
   email = '';
   address: string | null = null;
   bio: string | null = null;
-  role: string | null = null; 
-  permissions: string | null = null; 
+  selectedRoleId: number | null = null;
+  roles: Role[] = [];
   password = '';
   password_confirmation = ''; 
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private roleService: RoleService
+  ) {}
 
+  ngOnInit() {
+    this.loadRoles();
+  }
+
+  loadRoles() {
+    this.roleService.getRoles().subscribe({
+      next: (roles) => {
+        this.roles = roles;
+        console.log('Roles loaded:', roles);
+      },
+      error: (error) => {
+        console.error('Failed to load roles', error);
+      }
+    });
   }
 
   isOpen = false;
@@ -58,6 +76,10 @@ export class ModalRegistration {
       email: this.email,
       address: this.address,
       bio: this.bio,
+      role: this.selectedRoleId ? { 
+         role_id: this.selectedRoleId,
+         role_name: this.roles.find(r => r.role_id === this.selectedRoleId)?.role_name || ''
+      } : undefined,
       is_active: true,
       password: this.password,
       password_confirmation: this.password_confirmation 
@@ -85,8 +107,7 @@ export class ModalRegistration {
     this.email = '';
     this.address = null;
     this.bio = null;
-    // this.role = null;
-    this.permissions = null;
+    this.selectedRoleId = null;
     this.password = '';
     this.password_confirmation = '';
   }

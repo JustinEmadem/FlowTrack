@@ -55,12 +55,17 @@
         
         <div class="col-span-1">
           <app-label>Role</app-label>
-          <app-input-field 
+          <select 
             id="role"
-            type="text" 
-            placeholder="Team Manager" 
             name="role"
-            />
+            [(ngModel)]="selectedRoleId"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option [value]="null" disabled>Select a role</option>
+            <option *ngFor="let role of roles" [value]="role.role_id">
+              {{ role.role_name }}
+            </option>
+          </select>
         </div>
 
         <div class="col-span-1">
