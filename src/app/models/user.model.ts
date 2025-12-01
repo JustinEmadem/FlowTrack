@@ -5,7 +5,13 @@ export interface User {
   email: string;
   address?: string | null;
   bio?: string | null;
+  role?: Role;
   is_active: boolean;
   password: string;
   password_confirmation: string;
+}
+
+export interface Role {
+  role_id: number;
+  role_name: string;
 }
