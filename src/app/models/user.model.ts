@@ -5,6 +5,7 @@ export interface User {
   email: string;
   address?: string | null;
   bio?: string | null;
+  role_id?: number; 
   role?: Role;
   is_active: boolean;
   password: string;

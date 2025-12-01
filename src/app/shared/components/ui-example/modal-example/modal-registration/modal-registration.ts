@@ -69,17 +69,15 @@ export class ModalRegistration implements OnInit {
   }
 
   handleSave() {
-    const payload: User = {
+    // Send role_id directly instead of nested in role object
+    const payload = {
       firstname: this.firstname,
       middlename: this.middlename,
       lastname: this.lastname,
       email: this.email,
       address: this.address,
       bio: this.bio,
-      role: this.selectedRoleId ? { 
-         role_id: this.selectedRoleId,
-         role_name: this.roles.find(r => r.role_id === this.selectedRoleId)?.role_name || ''
-      } : undefined,
+      role_id: this.selectedRoleId!,
       is_active: true,
       password: this.password,
       password_confirmation: this.password_confirmation 
@@ -95,7 +93,14 @@ export class ModalRegistration implements OnInit {
       },
       error: (error) => {
         console.error('Registration failed', error);
-        alert('Registration failed: ' + (error.error.message || 'Unknown error'));
+        // Display validation errors if available
+        if (error.error && error.error.errors) {
+          console.error('Validation errors:', error.error.errors);
+          const errorMessages = Object.values(error.error.errors).flat().join('\n');
+          alert('Registration failed:\n' + errorMessages);
+        } else {
+          alert('Registration failed: ' + (error.error.message || 'Unknown error'));
+        }
       }
     });
   }

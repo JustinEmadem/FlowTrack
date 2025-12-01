@@ -46,7 +46,7 @@ export class AuthService {
     );
   }
 
-    logout() {
+  logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
@@ -54,11 +54,12 @@ export class AuthService {
 
   getUserRole(): string | null {
     const user = this.currentUserSubject.value;
-    return user?.role && user.role.role_name.length > 0 ? user.role.role_name : null;
+    return user?.role?.role_name ?? null;
   }
-
+  
   hasRole(roleName: string): boolean {
     const user = this.currentUserSubject.value;
-    return user?.role?.role_name === roleName || false;
+    return user?.role?.role_name === roleName;
   }
+
 }
