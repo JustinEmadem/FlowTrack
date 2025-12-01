@@ -69,7 +69,6 @@ export class ModalRegistration implements OnInit {
   }
 
   handleSave() {
-    // Send role_id directly instead of nested in role object
     const payload = {
       firstname: this.firstname,
       middlename: this.middlename,
