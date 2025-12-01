@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input-field',
-  imports: [CommonModule],
+  imports: [CommonModule , FormsModule],
   template: `
     <div class="relative">
       <input
@@ -18,10 +19,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
         [disabled]="disabled"
         [ngClass]="inputClasses"
         (input)="onInput($event)"
+        (blur)="onTouched()"
       />
 
-      @if (hint) {
-      <p class="mt-1.5 text-xs"
+      <p *ngIf="hint" class="mt-1.5 text-xs"
         [ngClass]="{
           'text-error-500': error,
           'text-success-500': success,
@@ -29,17 +30,22 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
         }">
         {{ hint }}
       </p>
-      }
     </div>
   `,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputFieldComponent),
+      multi: true
+    }
+  ]
 })
-export class InputFieldComponent {
+export class InputFieldComponent implements ControlValueAccessor {
 
   @Input() type: string = 'text';
   @Input() id?: string = '';
   @Input() name?: string = '';
   @Input() placeholder?: string = '';
-  @Input() value: string | number = '';
   @Input() min?: string;
   @Input() max?: string;
   @Input() step?: number;
@@ -49,7 +55,11 @@ export class InputFieldComponent {
   @Input() hint?: string;
   @Input() className: string = '';
 
-  @Output() valueChange = new EventEmitter<string | number>();
+  value: string | number = '';
+
+  // These will be registered by Angular forms
+  onChange = (_: any) => {};
+  onTouched = () => {};
 
   get inputClasses(): string {
     let inputClasses = `h-11 w-full rounded-lg border appearance-none px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 ${this.className}`;
@@ -66,8 +76,29 @@ export class InputFieldComponent {
     return inputClasses;
   }
 
+  // When input inside changes, propagate value back to Angular forms
   onInput(event: Event) {
     const input = event.target as HTMLInputElement;
-    this.valueChange.emit(this.type === 'number' ? +input.value : input.value);
+    const newValue = this.type === 'number' ? +input.value : input.value;
+    this.value = newValue;
+    this.onChange(newValue);  // notify Angular forms
+  }
+
+  // ControlValueAccessor interface methods:
+
+  writeValue(value: any): void {
+    this.value = value;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 }

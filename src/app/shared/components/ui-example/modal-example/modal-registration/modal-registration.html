@@ -1,0 +1,130 @@
+<app-button size="sm" (btnClick)="openModal()"> Add User </app-button>
+  <app-modal
+    [isOpen]="isOpen"
+    (close)="closeModal()"
+    className="max-w-[584px] p-5 lg:p-10"
+  >
+    <form class="">
+      <h4 class="mb-6 text-lg font-medium text-gray-800 dark:text-white/90">
+        Personal Information
+      </h4>
+
+      <div class="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
+        <div class="col-span-1">
+          <app-label>First Name</app-label>
+          <app-input-field
+            id="firstname"
+            type="text" 
+            placeholder="Carol Jean"
+            [(ngModel)]="firstname"
+            name="firstname" 
+          />
+        </div>
+
+        <div class="col-span-1">
+          <app-label>Middlename</app-label>
+          <app-input-field 
+            id="middlename"
+            type="text" 
+            placeholder="Boruch" 
+            [(ngModel)]="middlename"
+            name="middlename"
+          />
+        </div>
+
+        <div class="col-span-1">
+          <app-label>Last Name</app-label>
+          <app-input-field
+            id="lastname"
+            type="text"
+            placeholder="emirhanboruch55@gmail.com"
+            [(ngModel)]="lastname"
+            name="lastname"
+          />
+        </div>
+
+        <div class="col-span-1">
+          <app-label>Phone</app-label>
+          <app-input-field 
+            id="phone"
+            type="text" 
+            placeholder="+09 363 398 46"
+            name="phone"
+          />
+        </div>
+        
+        <div class="col-span-1">
+          <app-label>Role</app-label>
+          <app-input-field 
+            id="role"
+            type="text" 
+            placeholder="Team Manager" 
+            name="role"
+            />
+        </div>
+
+        <div class="col-span-1">
+          <app-label>Email</app-label>
+          <app-input-field
+            type="text"
+            placeholder="emirhanboruch55@gmail.com"
+            name="email"
+            [(ngModel)]="email"
+          />
+        </div>
+
+        <div class="col-span-1 sm:col-span-2">
+        <app-label>Address</app-label>
+        <app-input-field
+          id="address"
+          type="text"
+          placeholder="123 Street, City"
+          [(ngModel)]="address"
+          name="address"
+        />
+      </div>
+
+        <div class="col-span-1 sm:col-span-2">
+          <app-label>Bio</app-label>
+          <app-input-field 
+            id="bio"
+            type="text" 
+            placeholder="Team Manager" 
+            [(ngModel)]="bio"
+            name="bio"
+            />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 mt-4">
+        <div class="col-span-1">
+          <app-label>Password</app-label>
+          <app-input-field
+            id="password"
+            type="password"
+            placeholder="********"
+            [(ngModel)]="password"
+            name="password"
+          />
+      </div>
+
+      <div class="col-span-1">
+        <app-label>Confirm Password</app-label>
+          <app-input-field
+            id="password_confirmation"
+            type="password"
+            placeholder="********"
+            [(ngModel)]="password_confirmation"
+            name="password_confirmation"
+          />
+        </div>  
+      </div>
+
+      <div class="flex items-center justify-end w-full gap-3 mt-6">
+        <app-button size="sm" variant="outline" (btnClick)="closeModal()">
+          Close
+        </app-button>
+        <app-button size="sm" (btnClick)="handleSave()"> Save Changes </app-button>
+      </div>
+    </form>
+  </app-modal>
