@@ -7,12 +7,13 @@ import { FormElementsComponent } from './pages/forms/form-elements/form-elements
 import { BasicTablesComponent } from './pages/tables/basic-tables/basic-tables.component';
 import { AppLayoutComponent } from './shared/layout/app-layout/app-layout.component';
 import { SignInComponent } from './pages/auth-pages/sign-in/sign-in.component';
-import { SignUpComponent } from './pages/auth-pages/sign-up/sign-up.component';
+import { authGuard } from './services/auth.guard';
 
 export const routes: Routes = [
   {
     path:'',
     component:AppLayoutComponent,
+    canActivate:[authGuard],
     children:[
       {
         path: '',
@@ -50,11 +51,6 @@ export const routes: Routes = [
   {
     path:'signin',
     component:SignInComponent,
-    title:'Angular Sign In Dashboard | TailAdmin - Angular Admin Dashboard Template'
-  },
-  {
-    path:'signup',
-    component:SignUpComponent,
-    title:'Angular Sign Up Dashboard | TailAdmin - Angular Admin Dashboard Template'
+    title:'Checheche'
   },
 ];
