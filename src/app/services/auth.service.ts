@@ -61,10 +61,19 @@ export class AuthService {
     );
   }
 
-
   getUserRole(): string | null {
     const user = this.currentUserSubject.value;
-    return user?.role?.role_name ?? null;
+    if (user?.role?.name) {
+      return user.role.name.toLowerCase();
+    }
+    if (user?.roles && user.roles.length > 0) {
+      return user.roles[0].name.toLowerCase();
+    }
+    if (user?.role?.role_name) {
+      return user.role.role_name.toLowerCase();
+    }
+    
+    return null;
   }
   
   hasRole(roleName: string): boolean {

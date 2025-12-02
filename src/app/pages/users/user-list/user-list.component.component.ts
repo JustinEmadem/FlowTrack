@@ -10,9 +10,7 @@ import { ModalRegistration } from '../../../shared/components/ui-example/modal-e
   imports: [
     BasicTableFourComponent,
     PageBreadcrumbComponent,
-    ComponentCardComponent,
     ModalRegistration,
-    ButtonComponent,
   ],
   templateUrl: './user-list.component.component.html',
   styleUrl: './user-list.component.component.css'

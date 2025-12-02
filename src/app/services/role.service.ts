@@ -16,8 +16,10 @@ export class RoleService {
   getRoles(): Observable<Role[]> {
     return this.http.get<any[]>(`${this.apiUrl}/roles`).pipe(
       map(roles => roles.map(role => ({
-        role_id: role.id,
-        role_name: role.name
+        id: role.id,         
+        name: role.name,      
+        role_id: role.id,      
+        role_name: role.name   
       })))
     );
   }

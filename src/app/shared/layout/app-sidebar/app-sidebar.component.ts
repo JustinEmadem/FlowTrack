@@ -26,8 +26,8 @@ type NavItem = {
 })
 
 export class AppSidebarComponent {
-  currentUserRole: any;
-  navItems: NavItem[] = [
+  currentUserRole: string | null = null;
+  private readonly originalNavItems: NavItem[] =[
     {
       icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.5 3.25C4.25736 3.25 3.25 4.25736 3.25 5.5V8.99998C3.25 10.2426 4.25736 11.25 5.5 11.25H9C10.2426 11.25 11.25 10.2426 11.25 8.99998V5.5C11.25 4.25736 10.2426 3.25 9 3.25H5.5ZM4.75 5.5C4.75 5.08579 5.08579 4.75 5.5 4.75H9C9.41421 4.75 9.75 5.08579 9.75 5.5V8.99998C9.75 9.41419 9.41421 9.74998 9 9.74998H5.5C5.08579 9.74998 4.75 9.41419 4.75 8.99998V5.5ZM5.5 12.75C4.25736 12.75 3.25 13.7574 3.25 15V18.5C3.25 19.7426 4.25736 20.75 5.5 20.75H9C10.2426 20.75 11.25 19.7427 11.25 18.5V15C11.25 13.7574 10.2426 12.75 9 12.75H5.5ZM4.75 15C4.75 14.5858 5.08579 14.25 5.5 14.25H9C9.41421 14.25 9.75 14.5858 9.75 15V18.5C9.75 18.9142 9.41421 19.25 9 19.25H5.5C5.08579 19.25 4.75 18.9142 4.75 18.5V15ZM12.75 5.5C12.75 4.25736 13.7574 3.25 15 3.25H18.5C19.7426 3.25 20.75 4.25736 20.75 5.5V8.99998C20.75 10.2426 19.7426 11.25 18.5 11.25H15C13.7574 11.25 12.75 10.2426 12.75 8.99998V5.5ZM15 4.75C14.5858 4.75 14.25 5.08579 14.25 5.5V8.99998C14.25 9.41419 14.5858 9.74998 15 9.74998H18.5C18.9142 9.74998 19.25 9.41419 19.25 8.99998V5.5C19.25 5.08579 18.9142 4.75 18.5 4.75H15ZM15 12.75C13.7574 12.75 12.75 13.7574 12.75 15V18.5C12.75 19.7426 13.7574 20.75 15 20.75H18.5C19.7426 20.75 20.75 19.7427 20.75 18.5V15C20.75 13.7574 19.7426 12.75 18.5 12.75H15ZM14.25 15C14.25 14.5858 14.5858 14.25 15 14.25H18.5C18.9142 14.25 19.25 14.5858 19.25 15V18.5C19.25 18.9142 18.9142 19.25 18.5 19.25H15C14.5858 19.25 14.25 18.9142 14.25 18.5V15Z" fill="currentColor"></path></svg>`,
       name: "Dashboard",
@@ -45,16 +45,10 @@ export class AppSidebarComponent {
       ],
     },
     {
-      icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 3.5C7.30558 3.5 3.5 7.30558 3.5 12C3.5 14.1526 4.3002 16.1184 5.61936 17.616C6.17279 15.3096 8.24852 13.5955 10.7246 13.5955H13.2746C15.7509 13.5955 17.8268 15.31 18.38 17.6167C19.6996 16.119 20.5 14.153 20.5 12C20.5 7.30558 16.6944 3.5 12 3.5ZM17.0246 18.8566V18.8455C17.0246 16.7744 15.3457 15.0955 13.2746 15.0955H10.7246C8.65354 15.0955 6.97461 16.7744 6.97461 18.8455V18.856C8.38223 19.8895 10.1198 20.5 12 20.5C13.8798 20.5 15.6171 19.8898 17.0246 18.8566ZM2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM11.9991 7.25C10.8847 7.25 9.98126 8.15342 9.98126 9.26784C9.98126 10.3823 10.8847 11.2857 11.9991 11.2857C13.1135 11.2857 14.0169 10.3823 14.0169 9.26784C14.0169 8.15342 13.1135 7.25 11.9991 7.25ZM8.48126 9.26784C8.48126 7.32499 10.0563 5.75 11.9991 5.75C13.9419 5.75 15.5169 7.32499 15.5169 9.26784C15.5169 11.2107 13.9419 12.7857 11.9991 12.7857C10.0563 12.7857 8.48126 11.2107 8.48126 9.26784Z" fill="currentColor"></path></svg>`,
-      name: "User Profile",
-      path: "/profile",
-      roles: ['administrator', 'project_manager', 'member', 'client']
-    },
-    {
       icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/> <line x1="7" y1="9" x2="17" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/> <line x1="7" y1="13" x2="17" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/> <line x1="7" y1="17" x2="13" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/> <circle cx="5" cy="9" r="1" fill="currentColor"/> <circle cx="5" cy="13" r="1" fill="currentColor"/> <circle cx="5" cy="17" r="1" fill="currentColor"/> </svg>`,
       name: "Project Management",
       path: "/project-management",
-      roles: ['administrator', 'project_manager', 'member']
+      roles: ['administrator', 'project_manager']
     },
     {
       icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="6.5" cy="9" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/> <path d="M4 17c0-1.5 3-2 4.5-2s4.5.5 4.5 2v1H4v-1z" stroke="currentColor" stroke-width="1.5" fill="none"/> <circle cx="12" cy="7" r="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/> <path d="M9 18c0-2 6-2 6 0v1H9v-1z" stroke="currentColor" stroke-width="1.5" fill="none"/> <circle cx="17.5" cy="9" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/> <path d="M15 17c0-1.5 3-2 4.5-2S24 15.5 24 17v1h-9v-1z" stroke="currentColor" stroke-width="1.5" fill="none"/> </svg>`,
@@ -84,9 +78,11 @@ export class AppSidebarComponent {
       icon: `<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M16 1C17.6569 1 19 2.34315 19 4C19 4.55228 18.5523 5 18 5C17.4477 5 17 4.55228 17 4C17 3.44772 16.5523 3 16 3H4C3.44772 3 3 3.44772 3 4V20C3 20.5523 3.44772 21 4 21H16C16.5523 21 17 20.5523 17 20V19C17 18.4477 17.4477 18 18 18C18.5523 18 19 18.4477 19 19V20C19 21.6569 17.6569 23 16 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H16Z" fill="currentColor"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7991 8.20087C20.4993 7.90104 20.0132 7.90104 19.7133 8.20087L11.9166 15.9977C11.7692 16.145 11.6715 16.3348 11.6373 16.5404L11.4728 17.5272L12.4596 17.3627C12.6652 17.3285 12.855 17.2308 13.0023 17.0835L20.7991 9.28666C21.099 8.98682 21.099 8.5007 20.7991 8.20087ZM18.2991 6.78666C19.38 5.70578 21.1325 5.70577 22.2134 6.78665C23.2942 7.86754 23.2942 9.61999 22.2134 10.7009L14.4166 18.4977C13.9744 18.9398 13.4052 19.2327 12.7884 19.3355L11.8016 19.5C10.448 19.7256 9.2744 18.5521 9.50001 17.1984L9.66448 16.2116C9.76728 15.5948 10.0602 15.0256 10.5023 14.5834L18.2991 6.78666Z" fill="currentColor"/> <path d="M5 7C5 6.44772 5.44772 6 6 6H14C14.5523 6 15 6.44772 15 7C15 7.55228 14.5523 8 14 8H6C5.44772 8 5 7.55228 5 7Z" fill="currentColor"/> <path d="M5 11C5 10.4477 5.44772 10 6 10H10C10.5523 10 11 10.4477 11 11C11 11.5523 10.5523 12 10 12H6C5.44772 12 5 11.5523 5 11Z" fill="currentColor"/> <path d="M5 15C5 14.4477 5.44772 14 6 14H7C7.55228 14 8 14.4477 8 15C8 15.5523 7.55228 16 7 16H6C5.44772 16 5 15.5523 5 15Z" fill="currentColor"/></svg>`,
       name: "Feedback",
       path: "/feedback",
-      roles: ['administrator', 'project_manager', 'member', 'client']
+      roles: ['administrator', 'client']
     },
   ];
+
+  navItems: NavItem[] = [];
   othersItems: NavItem[] = [];
 
   openSubmenu: string | null | number = null;
@@ -111,12 +107,17 @@ export class AppSidebarComponent {
   }
 
   ngOnInit() {
-    this.currentUserRole = this.authService.getUserRole();
-    if (this.currentUserRole) {
-      this.navItems = this.navItems.filter(
-        item => !item.roles || item.roles.includes(this.currentUserRole!)
-    );
+    const storedUser = localStorage.getItem('currentUser');
+      if (storedUser) {
+      const user = JSON.parse(storedUser);
     }
+    this.subscription.add(
+    this.authService.currentUser$.subscribe(user => {
+        this.currentUserRole = this.authService.getUserRole();
+        this.filterNavItems();
+        })
+      );
+    
     this.subscription.add(
       this.router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
@@ -124,23 +125,26 @@ export class AppSidebarComponent {
         }
       })
     );
+    
     this.subscription.add(
       combineLatest([this.isExpanded$, this.isMobileOpen$, this.isHovered$]).subscribe(
         ([isExpanded, isMobileOpen, isHovered]) => {
           if (!isExpanded && !isMobileOpen && !isHovered) {
-            // this.openSubmenu = null;
-            // this.savedSubMenuHeights = { ...this.subMenuHeights };
-            // this.subMenuHeights = {};
             this.cdr.detectChanges();
-          } else {
-            // Restore saved heights when reopening
-            // this.subMenuHeights = { ...this.savedSubMenuHeights };
-            // this.cdr.detectChanges();
           }
         }
       )
     );
     this.setActiveMenuFromRoute(this.router.url);
+  }
+
+    private filterNavItems() {
+    if (this.currentUserRole) {
+      this.navItems = this.originalNavItems.filter( item => !item.roles || item.roles.includes(this.currentUserRole!));
+      this.cdr.detectChanges();
+    } else {
+      this.navItems = [];
+    }
   }
 
   ngOnDestroy() {

@@ -6,13 +6,34 @@ export interface User {
   address?: string | null;
   bio?: string | null;
   role_id?: number; 
-  role?: Role;
+  roles?: Role[]; 
+  role?: Role;   
   is_active: boolean;
   password: string;
   password_confirmation: string;
 }
 
+export interface UserData {
+  id: number;
+  firstname: string;
+  middlename?: string | null;
+  lastname: string;
+  email: string;
+  phone?: string | null;
+  address?: string | null;
+  bio?: string | null;
+  role_id?: number; 
+  roles?: Role[]; 
+  role?: Role;   
+  is_active: boolean;
+  password?: string;
+  password_confirmation?: string;
+}
+
+
 export interface Role {
-  role_id: number;
-  role_name: string;
+  id: number;       
+  name: string;      
+  role_id?: number;  
+  role_name?: string; 
 }
