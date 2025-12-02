@@ -40,84 +40,82 @@
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-100 dark:divide-white/[0.05]">
-<!-- Change line 43 - use $index instead of user.id for tracking -->
-@for (user of currentItems; track user.id ?? $index) {
-  <tr>
-    <td class="py-4">
-      <div class="flex items-center gap-3">
-        <div class="flex items-center justify-center w-10 h-10 rounded-full bg-brand-500/10 dark:bg-brand-500/20">
-          <span class="text-sm font-semibold text-brand-600 dark:text-brand-400">
-            {{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
-          </span>
-        </div>
-        <div>
-          <span class="block font-medium text-gray-700 text-theme-sm dark:text-gray-300">
-            {{ getFullName(user) }}
-          </span>
-        </div>
-      </div>
-    </td>
-    <td class="px-4 py-4 text-gray-700 text-theme-sm dark:text-gray-400">
-      {{ user.email }}
-    </td>
-    <td class="px-4 py-4">
-      <!-- Change line 65 - add null check -->
-      @if (user.role) {
-        <app-badge
-          size="sm"
-          [color]="getRoleBadgeColor(user.role.name)"
-        >
-          {{ formatRoleName(user.role.name) }}
-        </app-badge>
-      } @else {
-        <app-badge size="sm" color="info">
-          No Role
-        </app-badge>
-      }
-    </td>
-    <td class="px-4 py-4">
-      <app-badge
-        size="sm"
-        [color]="getStatusBadgeColor(user.is_active)"
-      >
-        {{ user.is_active ? 'Active' : 'Inactive' }}
-      </app-badge>
-    </td>
-    <td class="px-4 py-4">
-      <div class="flex items-center gap-2">
-        <button
-          (click)="handleView(user)"
-          class="inline-flex items-center justify-center h-8 px-3 text-xs font-medium text-gray-700 transition-colors bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
-          title="View user details"
-        >
-          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 4.5C5.5 4.5 2.5 10 2.5 10C2.5 10 5.5 15.5 10 15.5C14.5 15.5 17.5 10 17.5 10C17.5 10 14.5 4.5 10 4.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button
-          (click)="handleEdit(user)"
-          class="inline-flex items-center justify-center h-8 px-3 text-xs font-medium text-white transition-colors rounded-lg bg-brand-500 hover:bg-brand-600"
-          title="Edit user"
-        >
-          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.1667 2.5C14.3856 2.28113 14.6454 2.10752 14.9314 1.98906C15.2173 1.87061 15.5239 1.80969 15.8334 1.80969C16.1429 1.80969 16.4495 1.87061 16.7354 1.98906C17.0214 2.10752 17.2812 2.28113 17.5001 2.5C17.7189 2.71887 17.8926 2.97864 18.011 3.2646C18.1295 3.55055 18.1904 3.85717 18.1904 4.16667C18.1904 4.47616 18.1295 4.78278 18.011 5.06874C17.8926 5.35469 17.7189 5.61446 17.5001 5.83333L6.25008 17.0833L2.08341 18.3333L3.33341 14.1667L14.5834 2.91667L14.1667 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button
-          (click)="handleDelete(user)"
-          class="inline-flex items-center justify-center h-8 px-3 text-xs font-medium text-white transition-colors bg-red-500 rounded-lg hover:bg-red-600"
-          title="Delete user"
-        >
-          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2.5 5H4.16667H17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6.66675 5V3.33333C6.66675 2.89131 6.84234 2.46738 7.15491 2.15482C7.46747 1.84226 7.8914 1.66667 8.33341 1.66667H11.6667C12.1088 1.66667 12.5327 1.84226 12.8453 2.15482C13.1578 2.46738 13.3334 2.89131 13.3334 3.33333V5M15.8334 5V16.6667C15.8334 17.1087 15.6578 17.5326 15.3453 17.8452C15.0327 18.1577 14.6088 18.3333 14.1667 18.3333H5.83341C5.3914 18.3333 4.96747 18.1577 4.65491 17.8452C4.34234 17.5326 4.16675 17.1087 4.16675 16.6667V5H15.8334Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
-    </td>
-  </tr>
-}
+          @for (user of currentItems; track user.id) {
+          <tr>
+            <td class="py-4">
+              <div class="flex items-center gap-3">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full bg-brand-500/10 dark:bg-brand-500/20">
+                  <span class="text-sm font-semibold text-brand-600 dark:text-brand-400">
+                    {{ user.firstname.charAt(0) }}{{ user.lastname.charAt(0) }}
+                  </span>
+                </div>
+                <div>
+                  <span class="block font-medium text-gray-700 text-theme-sm dark:text-gray-300">
+                    {{ getFullName(user) }}
+                  </span>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-4 text-gray-700 text-theme-sm dark:text-gray-400">
+              {{ user.email }}
+            </td>
+            <td class="px-4 py-4">
+              <app-badge
+                size="sm"
+                [color]="getRoleBadgeColor(user.role?.name || '')"
+              >
+                  {{ formatRoleName(user.role?.name || '') }}
+              </app-badge>
+            </td>
+            <td class="px-4 py-4">
+              <app-badge
+                size="sm"
+                [color]="getStatusBadgeColor(user.is_active)"
+              >
+                {{ user.is_active ? 'Active' : 'Inactive' }}
+              </app-badge>
+            </td>
+            <td class="px-4 py-4">
+              <div class="flex items-center gap-2">
+                <button
+                  (click)="handleView(user)"
+                  class="inline-flex items-center justify-center h-8 px-3 text-xs font-medium text-gray-700 transition-colors bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
+                  title="View user details"
+                >
+                  <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 4.5C5.5 4.5 2.5 10 2.5 10C2.5 10 5.5 15.5 10 15.5C14.5 15.5 17.5 10 17.5 10C17.5 10 14.5 4.5 10 4.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <button
+                  (click)="handleEdit(user)"
+                  class="inline-flex items-center justify-center h-8 px-3 text-xs font-medium text-white transition-colors rounded-lg bg-brand-500 hover:bg-brand-600"
+                  title="Edit user"
+                >
+                  <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.1667 2.5C14.3856 2.28113 14.6454 2.10752 14.9314 1.98906C15.2173 1.87061 15.5239 1.80969 15.8334 1.80969C16.1429 1.80969 16.4495 1.87061 16.7354 1.98906C17.0214 2.10752 17.2812 2.28113 17.5001 2.5C17.7189 2.71887 17.8926 2.97864 18.011 3.2646C18.1295 3.55055 18.1904 3.85717 18.1904 4.16667C18.1904 4.47616 18.1295 4.78278 18.011 5.06874C17.8926 5.35469 17.7189 5.61446 17.5001 5.83333L6.25008 17.0833L2.08341 18.3333L3.33341 14.1667L14.5834 2.91667L14.1667 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <button
+                  (click)="handleDelete(user)"
+                  class="inline-flex items-center justify-center h-8 px-3 text-xs font-medium text-white transition-colors bg-red-500 rounded-lg hover:bg-red-600"
+                  title="Delete user"
+                >
+                  <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.5 5H4.16667H17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6.66675 5V3.33333C6.66675 2.89131 6.84234 2.46738 7.15491 2.15482C7.46747 1.84226 7.8914 1.66667 8.33341 1.66667H11.6667C12.1088 1.66667 12.5327 1.84226 12.8453 2.15482C13.1578 2.46738 13.3334 2.89131 13.3334 3.33333V5M15.8334 5V16.6667C15.8334 17.1087 15.6578 17.5326 15.3453 17.8452C15.0327 18.1577 14.6088 18.3333 14.1667 18.3333H5.83341C5.3914 18.3333 4.96747 18.1577 4.65491 17.8452C4.34234 17.5326 4.16675 17.1087 4.16675 16.6667V5H15.8334Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+          } @empty {
+          <tr>
+            <td colspan="5" class="px-4 py-8 text-center text-gray-500 dark:text-gray-400">
+              No users found
+            </td>
+          </tr>
+          }
         </tbody>
       </table>
     </div>

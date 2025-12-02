@@ -185,19 +185,22 @@ getDummyUsers(): UserData[] {
     return `${user.firstname} ${user.lastname}`;
   }
 
-  getRoleBadgeColor(roleName: string): 'success' | 'warning' | 'error' | 'info' {
-    const roleColors: { [key: string]: 'success' | 'warning' | 'error' | 'info' } = {
-      'administrator': 'error',
-      'project_manager': 'warning',
-      'member': 'info',
-      'client': 'success'
-    };
-    return roleColors[roleName.toLowerCase()] || 'info';
-  }
+getRoleBadgeColor(roleName: string | undefined): 'success' | 'warning' | 'error' | 'info' {
+  if (!roleName) return 'info';
+  
+  const roleColors: { [key: string]: 'success' | 'warning' | 'error' | 'info' } = {
+    'administrator': 'error',
+    'project_manager': 'warning',
+    'member': 'info',
+    'client': 'success'
+  };
+  return roleColors[roleName.toLowerCase()] || 'info';
+}
 
-  formatRoleName(roleName: string): string {
-    return roleName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-  }
+formatRoleName(roleName: string | undefined): string {
+  if (!roleName) return 'No Role';
+  return roleName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+}
 
   getStatusBadgeColor(isActive: boolean): 'success' | 'error' {
     return isActive ? 'success' : 'error';
