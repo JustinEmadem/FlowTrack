@@ -46,11 +46,21 @@ export class AuthService {
     );
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
+  logout(): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.post(`${this.apiUrl}/logout`, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).pipe(
+      tap(() => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('currentUser');
+        this.currentUserSubject.next(null);
+      })
+    );
   }
+
 
   getUserRole(): string | null {
     const user = this.currentUserSubject.value;
