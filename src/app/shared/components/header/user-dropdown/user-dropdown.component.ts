@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../../../app/services/auth.service'; 
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from '../../../../../app/models/user.model';
 import { DropdownItemTwoComponent } from '../../ui/dropdown/dropdown-item/dropdown-item.component-two';
 
 @Component({
@@ -13,8 +15,11 @@ import { DropdownItemTwoComponent } from '../../ui/dropdown/dropdown-item/dropdo
 })
 export class UserDropdownComponent {
   isOpen = false;
+  currentUser$: Observable<User | null>;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.currentUser$ = this.authService.currentUser$;
+  }
 
   toggleDropdown() {
     this.isOpen = !this.isOpen;
