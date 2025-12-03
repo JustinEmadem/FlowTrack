@@ -40,17 +40,6 @@ export class BasicTableFourComponent implements OnInit {
         this.userData = data;
         this.isLoading = false;
       },
-      error: (error) => {
-        if (error.status === 401) {
-          this.errorMessage = 'Unauthorized. Please log in again.';
-        } else if (error.status === 0) {
-          this.errorMessage = 'Cannot connect to server. Check CORS settings.';
-        } else {
-          this.errorMessage = 'Failed to load users. Please try again.';
-        }
-        
-        this.isLoading = false;
-      }
     });
   }
 
@@ -100,11 +89,6 @@ export class BasicTableFourComponent implements OnInit {
   }
 
   handleDelete(user: UserData): void {
-    if (!user.id) {
-      alert('Cannot delete user: Invalid user ID');
-      return;
-    }
-
     if (confirm(`Are you sure you want to delete ${user.firstname} ${user.lastname}?`)) {
       this.userService.deleteUser(user.id).subscribe({
         next: (response) => {
