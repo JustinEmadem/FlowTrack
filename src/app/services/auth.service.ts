@@ -10,75 +10,58 @@ import { User } from '../models/user.model';
 
 export class AuthService {
   private apiUrl = environment.apiUrl;
-  private currentUserSubject = new BehaviorSubject<User | null>(null);
+  private currentUserSubject = new BehaviorSubject<User | null>(this.getStoredUser());
   public currentUser$ = this.currentUserSubject.asObservable();
-  constructor(private http: HttpClient) {
+
+  constructor(private http: HttpClient) {}
+
+  private getStoredUser(): User | null {
     const storedUser = localStorage.getItem('currentUser');
-    if (storedUser) {
-      this.currentUserSubject.next(JSON.parse(storedUser));
-    }
+    return storedUser ? JSON.parse(storedUser) : null;
   }
 
-  register(user: User) {return this.http.post(`${this.apiUrl}/register`, user);}
+  private setUserData(user: User, token?: string): void {
+    if (token) localStorage.setItem('token', token);
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    this.currentUserSubject.next(user);
+  }
 
-  login(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, data).pipe(
+  private clearUserData(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
+  }
+
+  register(user: User): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, user);
+  }
+
+  login(credentials: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       tap((response: any) => {
-        if (response.token) {
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('currentUser', JSON.stringify(response.user));
-          this.currentUserSubject.next(response.user);
-        }
+        if (response.token) { this.setUserData(response.user, response.token);}
       })
     );
   }
 
-  getUser(token: string) {
-    return this.http.get(`${this.apiUrl}/user`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).pipe(
-      tap((user: any) => {
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-      })
+  getUser(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/user`).pipe(
+      tap((user: User) => this.setUserData(user))
     );
   }
 
   logout(): Observable<any> {
-    const token = localStorage.getItem('token');
-    return this.http.post(`${this.apiUrl}/logout`, {}, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).pipe(
-      tap(() => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('currentUser');
-        this.currentUserSubject.next(null);
-      })
+    return this.http.post(`${this.apiUrl}/logout`, {}).pipe(
+      tap(() => this.clearUserData())
     );
   }
 
   getUserRole(): string | null {
     const user = this.currentUserSubject.value;
-    if (user?.role?.name) {
-      return user.role.name.toLowerCase();
-    }
-    if (user?.roles && user.roles.length > 0) {
-      return user.roles[0].name.toLowerCase();
-    }
-    if (user?.role?.role_name) {
-      return user.role.role_name.toLowerCase();
-    }
-    
-    return null;
+    return user?.role?.name?.toLowerCase() || user?.roles?.[0]?.name?.toLowerCase() || null;
   }
   
   hasRole(roleName: string): boolean {
-    const user = this.currentUserSubject.value;
-    return user?.role?.role_name === roleName;
+    return this.getUserRole() === roleName.toLowerCase();
   }
-
 }

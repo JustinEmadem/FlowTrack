@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { User, UserData } from '../models/user.model';
+import { authInterceptor } from './auth.interceptors';
+import { UserData } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,23 +13,22 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  // Get all users - returns UserData with IDs
-  getUsers(): Observable<{ success: boolean; data: UserData[] }> {
-    return this.http.get<{ success: boolean; data: UserData[] }>(this.apiUrl);
+  getUsers(): Observable<UserData[]> {
+    return this.http.get<{ data: UserData[] }>(this.apiUrl)
+      .pipe(map(response => response.data));
   }
 
-  // Get single user - returns UserData with ID
-  getUser(id: number): Observable<{ success: boolean; data: UserData }> {
-    return this.http.get<{ success: boolean; data: UserData }>(`${this.apiUrl}/${id}`);
+  getUser(id: number): Observable<UserData> {
+    return this.http.get<{ data: UserData }>(`${this.apiUrl}/${id}`)
+      .pipe(map(response => response.data));
   }
 
-  // Update user - accepts partial UserData
-  updateUser(id: number, user: Partial<UserData>): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, user);
+  updateUser(id: number, user: Partial<UserData>): Observable<UserData> {
+    return this.http.put<{ data: UserData }>(`${this.apiUrl}/${id}`, user)
+      .pipe(map(response => response.data));
   }
 
-  // Delete user
-  deleteUser(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  deleteUser(id: number): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(`${this.apiUrl}/${id}`);
   }
 }
