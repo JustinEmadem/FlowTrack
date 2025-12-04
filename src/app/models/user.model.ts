@@ -37,3 +37,9 @@ export interface Role {
   role_id?: number;  
   role_name?: string; 
 }
+
+export interface UserCount {
+  total: number;
+  active: number;
+  inactive: number;
+}

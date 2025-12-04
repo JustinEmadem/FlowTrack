@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { authInterceptor } from './auth.interceptors';
-import { UserData } from '../models/user.model';
+import { UserData, UserCount } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,9 @@ export class UserService {
 
   deleteUser(id: number): Observable<{ message: string }> {
     return this.http.delete<{ message: string }>(`${this.apiUrl}/${id}`);
+  }
+
+  getUserCount(): Observable<UserCount> {
+    return this.http.get<UserCount>(`${this.apiUrl}/count/total`);
   }
 }
