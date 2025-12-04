@@ -24,7 +24,8 @@ export class BadgeComponent {
   }
 
   get baseStyles() {
-    return 'inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium';
+    // reduced horizontal padding and gap for a tighter badge
+    return 'inline-flex items-center px-2 py-0.5 justify-center gap-0.5 rounded-full font-medium';
   }
 
   get sizeClass() {

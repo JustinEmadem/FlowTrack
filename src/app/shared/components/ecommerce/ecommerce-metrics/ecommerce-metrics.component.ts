@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class EcommerceMetricsComponent {
   totalUsers = 0;
   activeUsers = 0;
+  inActiveUsers = 0;
   isLoading = true;
 
   public icons = {
@@ -32,6 +33,7 @@ export class EcommerceMetricsComponent {
       next: (data) => {
         this.totalUsers = data.total;
         this.activeUsers = data.active;
+        this.inActiveUsers = data.inactive;
         this.isLoading = false;
       },
       error: (error) => {
